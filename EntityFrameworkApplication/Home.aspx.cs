@@ -14,7 +14,7 @@ namespace EntityFrameworkApplication
         protected void Page_Load(object sender, EventArgs e)
         {
             pageLoad();
-            clearMethod();
+           clearMethod();
         }
 
         public void pageLoad()
@@ -38,31 +38,32 @@ namespace EntityFrameworkApplication
         {
             if (Page.IsValid)
             {
-
-                /*int age;
-                bool isAgeValid = int.TryParse(txtAge.Text, out age);
-
-                if (!isAgeValid)
+               /*int age;
+                if(int.TryParse(txtAge.Text, out age))
                 {
-                    // Handle invalid age input
-                   lbltext.Text="Please enter a valid age.";
-                    return;
+                    lbltext.Text = age.ToString();
+                }
+                else
+                {
+                    lbltext.Text = "Invalid input";
                 }*/
 
                 student sc = new student()
                 {
                     Name = txtName.Text,
-                    Age = Convert.ToInt32(txtAge.Text),
+                   Age = int.Parse(string.IsNullOrEmpty(txtAge.Text.ToString()) ? "0" : txtAge.Text.ToString()) ,
+
+                  // Age = age,
                     Email = txtEmail.Text
                 };
                 try
                 {
+                
                     db.students.Add(sc);
                     db.SaveChanges();
                     pageLoad();
                     clearMethod();
                     lbltext.Text = "Student ctrated successfully";
-
                 }
                 catch
                 {

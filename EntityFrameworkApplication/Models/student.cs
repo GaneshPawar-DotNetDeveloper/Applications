@@ -16,7 +16,7 @@ namespace EntityFrameworkApplication.Models
     {
         public int Rollnumber { get; set; }
         public string Name { get; set; }
-        public int Age { get; set; }
+        public Nullable<int> Age { get; set; }
         public string Email { get; set; }
     }
 }

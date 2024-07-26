@@ -106,5 +106,10 @@ namespace ADO.net_Application
             txtAge.Text = string.Empty;
             lbltext.Text = string.Empty;
         }
+
+        protected void btnLoads_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
