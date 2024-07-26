@@ -4,13 +4,10 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ADo_netRevisionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'ADo_netRevision.dbo.student' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+    <Schema Namespace="ADo_netRevisionModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="student">
           <Key>
             <PropertyRef Name="Rollnumber" />
-            <PropertyRef Name="Name" />
           </Key>
           <Property Name="Rollnumber" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
@@ -32,17 +29,9 @@ warning 6002: The table/view 'ADo_netRevision.dbo.student' does not have a prima
           <Parameter Name="Email" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="ADo_netRevisionModelStoreContainer">
-          <EntitySet Name="student" EntityType="Self.student" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [student].[Rollnumber] AS [Rollnumber], 
-    [student].[Name] AS [Name], 
-    [student].[Age] AS [Age], 
-    [student].[Email] AS [Email]
-    FROM [dbo].[student] AS [student]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="student" EntityType="Self.student" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ADo_netRevisionModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -59,7 +48,7 @@ warning 6002: The table/view 'ADo_netRevision.dbo.student' does not have a prima
         <EntityContainer Name="ABCD" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="students" EntityType="Self.student" />
           <FunctionImport Name="Sp_DeleteStudent">
-            <Parameter Name="Rollnumber" Mode="In" Type="Int32" />
+          <Parameter Name="Rollnumber" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="Sp_INsertData">
             <Parameter Name="Name" Mode="In" Type="String" />
